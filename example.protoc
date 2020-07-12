@@ -1,0 +1,29 @@
+// Available syntaxes are "proto2" and "proto3".
+syntax = "proto3";
+// Generated Java classes will be put inside the "com.adebski" package.
+package com.adebski;
+
+// message keyword defines a data type that we want to model, inside we define the fields present in a Person data type.
+//
+// Protocol Buffers require that each field has type, name, and a numeric identifier used during serialization and
+// deserialization. In the compact message format the serialized message does not contain field names, only identifiers
+// in order to reduce the message size.
+message Person {
+  string name = 1;
+  string surname = 2;
+  string email = 3;
+  // repeated keyword is used to declare a field holding a sequence of items. We can declare sequences of primitive
+  // type or our custom type.
+  repeated AccountDetails accounts = 4;
+}
+
+enum AccountType {
+  PERSONAL = 0;
+  PROFESSIONAL = 1;
+}
+
+message AccountDetails {
+  string id = 1;
+  AccountType accountType = 2;
+  map<string, string> metadata = 3;
+}

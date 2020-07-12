@@ -1,0 +1,12 @@
+syntax = "proto3";
+package com.adebski;
+
+message FixedExecutorServiceConfiguration {
+  string namePattern = 1;
+  int32 numberOfThreads = 2;
+  bool daemon = 3;
+}
+
+message ExecutorServices {
+  repeated FixedExecutorServiceConfiguration executorServiceConfigurations = 1;
+}

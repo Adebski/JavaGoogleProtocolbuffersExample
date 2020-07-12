@@ -1,0 +1,10 @@
+executorServiceConfigurations {
+    namePattern: "first-test-pool-%d"
+    numberOfThreads: 6
+    daemon: true
+}
+executorServiceConfigurations {
+    namePattern: "second-test-pool-%d"
+    numberOfThreads: "3"
+    daemon: true
+}
