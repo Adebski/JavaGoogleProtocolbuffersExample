@@ -1,0 +1,7 @@
+name: "someName"
+surname: "someSurname"
+email: "some_email@foo.bar"
+accounts {
+  id: "someId"
+  accountType: PROFESSIONAL
+}

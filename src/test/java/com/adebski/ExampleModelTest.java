@@ -5,6 +5,8 @@ import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class ExampleModelTest {
 
@@ -56,6 +58,13 @@ public class ExampleModelTest {
                         personAsTextFormat.length()));
         System.out.println(personAsTextFormat);
         System.out.println("original.equals(deserialized): " + TextFormat.parse(personAsTextFormat, ExampleProtoc.Person.class).equals(person));
+    }
 
+    @Test(expected = TextFormat.ParseException.class)
+    public void parseInvalidTextFormat() throws IOException {
+        String exampleConfiguration =
+                Files.readString(Paths.get("./example-person-invalid.proto"));
+
+        TextFormat.parse(exampleConfiguration, ExampleProtoc.Person.class);
     }
 }

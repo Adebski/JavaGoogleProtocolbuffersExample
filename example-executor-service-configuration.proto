@@ -5,6 +5,6 @@ executorServiceConfigurations {
 }
 executorServiceConfigurations {
     namePattern: "second-test-pool-%d"
-    numberOfThreads: "3"
+    numberOfThreads: 3
     daemon: true
 }

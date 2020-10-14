@@ -1,5 +1,7 @@
 package com.adebski;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
 import com.google.protobuf.TextFormat;
 import org.junit.Test;
 
@@ -31,5 +33,18 @@ public class ExecutorServiceConfigurationTest {
                 TextFormat.parse(exampleExecutorServiceConfiguration, ExecutorServiceProtoc.ExecutorServices.class);
 
         System.out.println("executorServices.equals(parsedExecutorServices): " + executorServices.equals(parsedExecutorServices));
+    }
+
+    @Test
+    public void createsExecutorServicesJackson() throws IOException {
+        String exampleConfiguration =
+                Files.readString(Paths.get("./example-executor-service-configuration.json"));
+        ObjectMapper objectMapper =
+                new ObjectMapper().registerModule(new ParameterNamesModule());
+
+        ExecutorServiceJackson.ExecutorServices parsedExecutorServices =
+                objectMapper.readValue(exampleConfiguration, ExecutorServiceJackson.ExecutorServices.class);
+
+        System.out.println(parsedExecutorServices);
     }
 }
