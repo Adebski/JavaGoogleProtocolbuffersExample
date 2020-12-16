@@ -34,17 +34,4 @@ public class ExecutorServiceConfigurationTest {
 
         System.out.println("executorServices.equals(parsedExecutorServices): " + executorServices.equals(parsedExecutorServices));
     }
-
-    @Test
-    public void createsExecutorServicesJackson() throws IOException {
-        String exampleConfiguration =
-                Files.readString(Paths.get("./example-executor-service-configuration.json"));
-        ObjectMapper objectMapper =
-                new ObjectMapper().registerModule(new ParameterNamesModule());
-
-        ExecutorServiceJackson.ExecutorServices parsedExecutorServices =
-                objectMapper.readValue(exampleConfiguration, ExecutorServiceJackson.ExecutorServices.class);
-
-        System.out.println(parsedExecutorServices);
-    }
 }

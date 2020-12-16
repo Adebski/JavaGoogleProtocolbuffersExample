@@ -1,0 +1,61 @@
+configuration {
+  key: "executorServiceConfigurations"
+  value {
+    valueWrapper: {
+      nestedConfiguration: {
+        configuration {
+          key: "namePattern"
+          value: {
+            valueWrapper: {
+              stringValue: "first-test-pool-%d"
+            }
+          }
+        }
+        configuration {
+          key: "numberOfThreads"
+          value: {
+            valueWrapper: {
+              intValue: 6
+            }
+          }
+        }
+        configuration {
+          key: "daemon"
+          value: {
+            valueWrapper: {
+              boolValue: true
+            }
+          }
+        }
+      }
+    }
+    valueWrapper: {
+      nestedConfiguration: {
+        configuration {
+          key: "namePattern"
+          value: {
+            valueWrapper: {
+              stringValue: "second-test-pool-%d"
+            }
+          }
+        }
+        configuration {
+          key: "numberOfThreads"
+          value: {
+            valueWrapper: {
+              intValue: 3
+            }
+          }
+        }
+        configuration {
+          key: "daemon"
+          value: {
+            valueWrapper: {
+              boolValue: true
+            }
+          }
+        }
+      }
+    }
+  }
+}

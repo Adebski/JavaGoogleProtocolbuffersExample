@@ -1,0 +1,32 @@
+{
+  "$id": "http://adebski.com/example-executor-service-configuration-schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "JSON schema that describes Java ExecutorService configuration",
+  "type": "object",
+  "properties": {
+    "executorServiceConfigurations": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/ExecutorServiceConfiguration" }
+    }
+  },
+  "definitions": {
+    "ExecutorServiceConfiguration": {
+      "type": "object",
+      "required": [ "namePattern", "numberOfThreads", "daemon" ],
+      "properties": {
+        "namePattern": {
+          "type": "string",
+          "description": "The name pattern used to create threads managed by this ExecutorService."
+        },
+        "numberOfThreads": {
+          "type": "integer",
+          "description": "The number of threads managed by this ExecutorService."
+        },
+        "daemon": {
+          "type": "boolean",
+          "description": "If threads managed by this ExecutorService should be daemon threads or not"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+syntax = "proto3";
+package com.adebski;
+
+message ValueWrapper {
+  oneof value_oneof {
+    string stringValue = 1;
+    int32 intValue = 2;
+    bool boolValue = 3;
+    GenericConfiguration nestedConfiguration = 4;
+  }
+}
+
+message Value {
+  repeated ValueWrapper valueWrapper = 1;
+}
+
+message GenericConfiguration {
+  map<string, Value> configuration = 1;
+}

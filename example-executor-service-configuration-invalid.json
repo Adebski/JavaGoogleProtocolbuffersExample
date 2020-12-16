@@ -1,0 +1,14 @@
+{
+  "executorServiceConfigurations": [
+    {
+      "namePattern": "first-test-pool-%d",
+      "numberOfThreads": "6",
+      "daemon": true
+    },
+    {
+      "namePattern": "second-test-pool-%d",
+      "numberOfThreads": 3
+    }
+  ]
+}
+
