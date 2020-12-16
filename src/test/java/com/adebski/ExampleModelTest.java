@@ -41,7 +41,7 @@ public class ExampleModelTest {
 
         System.out.println(
                 String.format(
-                        "Serialized Person object using binary encoder it takes %d bytes in memory:",
+                        "Serialized Person object using binary encoder takes %d bytes in memory:",
                         personAsBytes.length));
         for (byte b : personAsBytes) {
             System.out.print(String.format("%02x", b));
@@ -54,7 +54,7 @@ public class ExampleModelTest {
         String personAsTextFormat = TextFormat.printer().printToString(person);
         System.out.println(
                 String.format(
-                        "Serialized Person object using TextFormat encoder it takes %d bytes in memory",
+                        "Serialized Person object using TextFormat encoder takes %d bytes in memory",
                         personAsTextFormat.length()));
         System.out.println(personAsTextFormat);
         System.out.println("original.equals(deserialized): " + TextFormat.parse(personAsTextFormat, ExampleProtoc.Person.class).equals(person));
@@ -62,9 +62,15 @@ public class ExampleModelTest {
 
     @Test(expected = TextFormat.ParseException.class)
     public void parseInvalidTextFormat() throws IOException {
-        String exampleConfiguration =
+        try {
+            String exampleConfiguration =
                 Files.readString(Paths.get("./example-person-invalid.proto"));
 
-        TextFormat.parse(exampleConfiguration, ExampleProtoc.Person.class);
+            TextFormat.parse(exampleConfiguration, ExampleProtoc.Person.class);
+        } catch (TextFormat.ParseException e) {
+            System.out.println(e);
+            throw e;
+        }
+
     }
 }
